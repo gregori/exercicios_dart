@@ -1,4 +1,6 @@
-class Rectangle {
+import 'shape.dart';
+
+class Rectangle extends Shape {
   double _length;
   double _width;
 
@@ -11,15 +13,22 @@ class Rectangle {
     this._width,
   );
 
+  Rectangle.withLenghWidthColorFilled(
+    this._length,
+    this._width,
+    String color,
+    bool filled,
+  ) : super.withColorAndFilled(color, filled);
+
   double get width => _width;
   double get length => _length;
 
   set width(double width) {
-    this.width = width;
+    this._width = width;
   }
 
   set length(double length) {
-    this.length = length;
+    this._length = length;
   }
 
   double getArea() => width * length;
@@ -27,15 +36,20 @@ class Rectangle {
 
   @override
   String toString() {
-    return 'Rectangle[length=$length,width=$width]';
+    return 'Rectangle[${super.toString()},length=$length,width=$width]';
   }
 }
 
 void main() {
   var r1 = Rectangle();
   var r2 = Rectangle.withLenghAndWidth(2, 3);
+  var r3 = Rectangle.withLenghWidthColorFilled(1.5, 3.2, 'yellow', false);
   print(r1);
   print(r2);
+  print(r3);
+  r3.length = 9;
+  print(r3);
+
   print('R1: Área: ${r1.getArea()}, Perímetro: ${r1.getPerimeter()}');
   print('R2: Área: ${r2.getArea()}, Perímetro: ${r2.getPerimeter()}');
 }
