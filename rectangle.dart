@@ -31,7 +31,10 @@ class Rectangle extends Shape {
     this._length = length;
   }
 
+  @override
   double getArea() => width * length;
+
+  @override
   double getPerimeter() => 2 * width + 2 * length;
 
   @override
